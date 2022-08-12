@@ -14,14 +14,14 @@ export default function Users() {
 
   useEffect(() => {
     async function loadUsers() {
-      const { data: newUser } = await axios.get('http://localhost:3001/users')
+      const { data: newUser } = await axios.get('http://144.22.167.255:3001/users')
       setUsers(newUser)
     }
     loadUsers()
   }, [])
 
   async function deleteUser(userId) {
-    await axios.delete(`http://localhost:3001/users/${userId}`)
+    await axios.delete(`'http://144.22.167.255:3001/users${userId}`)
     setUsers(users.filter(user => user.id !== userId))
   }
 
