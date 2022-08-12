@@ -15,7 +15,7 @@ export default function Users() {
   useEffect(() => {
     async function loadUsers() {
       const { data: newUser } = await axios
-        .get('http://144.22.167.255:3000/users')
+        .get('http://144.22.247.45:3000/users')
         .catch(function (error) {
           console.log(JSON.stringify(error))
         })
@@ -25,7 +25,7 @@ export default function Users() {
   }, [])
 
   async function deleteUser(userId) {
-    await axios.delete(`http://144.22.167.255:3000/users${userId}`)
+    await axios.delete(`http://144.22.247.45:3000/users${userId}`)
     setUsers(users.filter(user => user.id !== userId))
   }
 

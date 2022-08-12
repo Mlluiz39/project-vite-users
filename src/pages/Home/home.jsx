@@ -21,7 +21,7 @@ export default function Home() {
     if (!validate()) return
 
     const { data: newUser } = await axios.post(
-      'http://144.22.167.255:3000/users',
+      'http://144.22.247.45:3000/users',
       {
         name: inputName.current.value,
         email: inputEmail.current.value,
