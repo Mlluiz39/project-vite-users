@@ -14,7 +14,11 @@ export default function Users() {
 
   useEffect(() => {
     async function loadUsers() {
-      const { data: newUser } = await axios.get('http://144.22.167.255:3000/users')
+      const { data: newUser } = await axios
+        .get('http://144.22.167.255:3000/users')
+        .catch(function (error) {
+          console.log(JSON.stringify(error))
+        })
       setUsers(newUser)
     }
     loadUsers()
