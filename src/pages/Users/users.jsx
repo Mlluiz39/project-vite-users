@@ -21,7 +21,7 @@ export default function Users() {
   }, [])
 
   async function deleteUser(userId) {
-    await axios.delete(`'http://144.22.167.255:3001/users${userId}`)
+    await axios.delete(`http://144.22.167.255:3001/users${userId}`)
     setUsers(users.filter(user => user.id !== userId))
   }
 
