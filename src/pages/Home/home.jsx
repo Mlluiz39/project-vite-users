@@ -2,7 +2,7 @@ import { useState, useRef } from 'react'
 import { useHistory } from 'react-router-dom'
 import swal from 'sweetalert'
 
-import axios from 'axios'
+import api from '@/api'
 
 import * as S from './styles'
 
@@ -20,8 +20,8 @@ export default function Home() {
   async function addNewUser() {
     if (!validate()) return
 
-    const { data: newUser } = await axios.post(
-      'http://144.22.247.45:3000/users',
+    const { data: newUser } = await api.post(
+      '/users',
       {
         name: inputName.current.value,
         email: inputEmail.current.value,

@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react'
 import { useHistory } from 'react-router-dom'
 
-import axios from 'axios'
+import api from '@/api'
 
 import * as S from './styles'
 
@@ -14,18 +14,19 @@ export default function Users() {
 
   useEffect(() => {
     async function loadUsers() {
-      const { data: newUser } = await axios
-        .get('http://144.22.247.45:3000/users')
+      const { data } = await api
+        .get('/users')
+
         .catch(function (error) {
-          console.log(JSON.stringify(error))
+          // console.log(JSON.stringify(error))
         })
-      setUsers(newUser)
+      setUsers(data)
     }
     loadUsers()
   }, [])
 
   async function deleteUser(userId) {
-    await axios.delete(`http://144.22.247.45:3000/users${userId}`)
+    await api.delete(`/users${userId}`)
     setUsers(users.filter(user => user.id !== userId))
   }
 
