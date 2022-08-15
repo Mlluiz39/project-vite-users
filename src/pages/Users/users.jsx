@@ -14,19 +14,19 @@ export default function Users() {
 
   useEffect(() => {
     async function loadUsers() {
-      const { data } = await api
+      const { data: newUsers } = await api
         .get('/users')
 
         .catch(function (error) {
-          // console.log(JSON.stringify(error))
+          console.log(JSON.stringify(error))
         })
-      setUsers(data)
+      setUsers(newUsers)
     }
     loadUsers()
   }, [])
 
   async function deleteUser(userId) {
-    await api.delete(`/users${userId}`)
+    await api.delete(`/users/${userId}`)
     setUsers(users.filter(user => user.id !== userId))
   }
 
